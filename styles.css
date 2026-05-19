@@ -685,6 +685,7 @@ main {
     border-radius: 10px;
     box-shadow: var(--shadow);
     margin: 2rem 0;
+    color: var(--white);
 }
 
 .resume-section {
@@ -998,26 +999,8 @@ main {
 
 .final-thoughts p {
     font-size: 1.05rem;
-    line-height: 1.8;
     color: var(--white);
 }
-
-/* ===============================
-   FOOTER
-   =============================== */
-
-footer {
-    background: linear-gradient(135deg, var(--secondary-color), #1a1a1a);
-    border-top: 3px solid var(--primary-color);
-    color: var(--white);
-    text-align: center;
-    padding: 2rem;
-    margin-top: 4rem;
-}
-
-/* ===============================
-   ANIMATIONS
-   =============================== */
 
 @keyframes fadeIn {
     from {
@@ -1030,11 +1013,19 @@ footer {
     }
 }
 
-/* ===============================
-   RESPONSIVE DESIGN
-   =============================== */
-
 @media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .page-header h1 {
+        font-size: 1.8rem;
+    }
+
     .nav-menu {
         gap: 1rem;
     }
@@ -1043,27 +1034,7 @@ footer {
         font-size: 0.8rem;
     }
 
-    .hero-content h1 {
-        font-size: 2rem;
-    }
-
-    .hero-content p {
-        font-size: 1rem;
-    }
-
-    .page-header h1 {
-        font-size: 1.8rem;
-    }
-
-    .highlights-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .projects-preview {
-        grid-template-columns: 1fr;
-    }
-
-    .projects-grid {
-        grid-template-columns: 1fr;
+    .highlight-card, .interest-card, .learning-card, .advice-card {
+        padding: 1.5rem;
     }
 }
