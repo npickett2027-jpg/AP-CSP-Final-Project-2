@@ -6,10 +6,10 @@
     <title>Projects - Personal Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Modern, responsive styling for the embedded games */
+        /* Modern, fluid container adjustments for embedded games */
         .iframe-wrapper {
             width: 100%;
-            margin-top: 24px;
+            margin-top: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -17,16 +17,16 @@
 
         .iframe-wrapper iframe {
             width: 100%;
-            max-width: 410px;          /* Restricts maximum canvas width to original design */
-            aspect-ratio: 410 / 460;   /* Keeps perfect dimensions across all screens */
-            border: 2px solid #e2e8f0; /* Soft modern border */
-            border-radius: 12px;       /* Rounded edges matching modern card layouts */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Adds a crisp shadow depth */
-            background-color: #f8fafc;  /* Clean backdrop while the CMU canvas initializes */
+            max-width: 410px;          /* Ensures it doesn't get unnaturally stretched on desktop */
+            aspect-ratio: 410 / 460;   /* Preserves the original canvas proportions across all devices */
+            border: 2px solid #e2e8f0; /* Crisp, clean frame border */
+            border-radius: 12px;       /* Smoothly curves corners to match modern grid card UI elements */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Adds a subtle drop shadow depth effect */
+            background-color: #f8fafc;  /* Clean backdrop placeholder color while game assets load */
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* Interactive hover lift effect */
+        /* Subtle hover interaction to make the cards feel alive */
         .iframe-wrapper iframe:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
