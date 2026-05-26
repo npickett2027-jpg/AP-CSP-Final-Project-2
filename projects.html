@@ -6,30 +6,38 @@
     <title>Projects - Personal Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Modern, fluid container adjustments for embedded games */
+        /* Container ensuring the embed stays fully visible within the card view */
         .iframe-wrapper {
             width: 100%;
-            margin-top: 20px;
+            margin-top: 15px;
             display: flex;
             justify-content: center;
             align-items: center;
+            background-color: #f8fafc;
+            border-radius: 12px;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #e2e8f0;
         }
 
         .iframe-wrapper iframe {
             width: 100%;
-            max-width: 410px;          /* Ensures it doesn't get unnaturally stretched on desktop */
-            aspect-ratio: 410 / 460;   /* Preserves the original canvas proportions across all devices */
-            border: 2px solid #e2e8f0; /* Crisp, clean frame border */
-            border-radius: 12px;       /* Smoothly curves corners to match modern grid card UI elements */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Adds a subtle drop shadow depth effect */
-            background-color: #f8fafc;  /* Clean backdrop placeholder color while game assets load */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            /* Strict maximum constraints so the whole canvas is always visible */
+            max-width: 360px;           
+            max-height: 400px;          
+            aspect-ratio: 410 / 460;   /* Maintains internal game proportions */
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            display: block;
         }
 
-        /* Subtle hover interaction to make the cards feel alive */
-        .iframe-wrapper iframe:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        /* Responsive scaling check for smaller tablet environments */
+        @media (max-width: 768px) {
+            .iframe-wrapper iframe {
+                max-width: 100%;
+                max-height: 380px;
+            }
         }
     </style>
 </head>
