@@ -5,6 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - Personal Portfolio</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Modern, responsive styling for the embedded games */
+        .iframe-wrapper {
+            width: 100%;
+            margin-top: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .iframe-wrapper iframe {
+            width: 100%;
+            max-width: 410px;          /* Restricts maximum canvas width to original design */
+            aspect-ratio: 410 / 460;   /* Keeps perfect dimensions across all screens */
+            border: 2px solid #e2e8f0; /* Soft modern border */
+            border-radius: 12px;       /* Rounded edges matching modern card layouts */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Adds a crisp shadow depth */
+            background-color: #f8fafc;  /* Clean backdrop while the CMU canvas initializes */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Interactive hover lift effect */
+        .iframe-wrapper iframe:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -28,6 +55,7 @@
 
         <section class="projects-section">
             <div class="projects-grid">
+                
                 <div class="project-card">
                     <div class="project-header">
                         <h3>Personal Portfolio Website</h3>
@@ -58,10 +86,11 @@
                             <span class="tech">Game Design</span>
                         </div>
                         <p class="project-description"><strong>Key Features:</strong> A geography guessing game developed using Python graphics on the CMU CS Academy platform.</p>
+                        
+                        <div class="iframe-wrapper">
+                            <iframe src="https://academy.cs.cmu.edu/sharing/greyKangaroo262216/embed" title="AP CSP Flag Guessing Game" loading="lazy"></iframe>
+                        </div>
                     </div>
-                    <iframe width="410" height="460"
-   src="https://academy.cs.cmu.edu/sharing/greyKangaroo262216/embed"> 
- </iframe>
                 </div>
 
                 <div class="project-card">
@@ -77,10 +106,11 @@
                             <span class="tech">Physics Engine</span>
                         </div>
                         <p class="project-description"><strong>Key Features:</strong> Realistic friction and ball bounce physics, dynamic power/aim indicator, and multiple unique map levels with sand traps and water hazards.</p>
+                        
+                        <div class="iframe-wrapper">
+                            <iframe src="https://academy.cs.cmu.edu/sharing/springGreenShark585669/embed" title="2D Micro Golf Game" loading="lazy"></iframe>
+                        </div>
                     </div>
-                   <iframe width="410" height="460"
-   src="https://academy.cs.cmu.edu/sharing/springGreenShark585669/embed"> 
- </iframe>
                 </div>
 
                 <div class="project-card">
@@ -96,13 +126,17 @@
                             <span class="tech">Algorithmic Logic</span>
                         </div>
                         <p class="project-description"><strong>Key Features:</strong> Grid-based movement logic, real-time score tracking, persistent high scores utilizing local file storage, and progressive speed difficulty.</p>
+                        
+                        <div class="iframe-wrapper">
+                            <iframe src="https://academy.cs.cmu.edu/sharing/thistleLion876866/embed" title="Classic Retro Snake Game" loading="lazy"></iframe>
+                        </div>
                     </div>
-                    <iframe width="410" height="460"
-   src="https://academy.cs.cmu.edu/sharing/thistleLion876866/embed"> 
- </iframe>
                 </div>
 
-            </div> </section> <section class="content-section">
+            </div> 
+        </section> 
+        
+        <section class="content-section">
             <h2>Project Highlights</h2>
             <p>These projects demonstrate my understanding of:</p>
             <ul class="highlights-list">
