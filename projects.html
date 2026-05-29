@@ -6,10 +6,48 @@
     <title>Projects - Personal Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <style>
+        /* Automatically balances grid heights cleanly across different screens */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            align-items: stretch;
+        }
+
+        /* Forces rectangular boxes to maintain a uniform structure */
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+            background: #ffffff; /* Ensures contrast if not set globally */
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        /* Distributes internal project card details evenly within the box */
+        .project-body {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            padding: 20px;
+            box-sizing: border-box;
+            justify-content: space-between; /* Pushes the bottom items down perfectly */
+        }
+
+        .project-text-content {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex-grow: 1;
+        }
+
         /* Container ensuring the embed stays fully visible within the card view */
         .iframe-wrapper {
             width: 100%;
-            margin-top: 15px;
+            margin-top: auto; /* Aligns wrappers to the bottom of the card consistently */
+            padding-top: 15px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -18,11 +56,21 @@
             padding: 12px;
             box-sizing: border-box;
             border: 1px solid #e2e8f0;
+            position: relative;
+            /* Prevents embedded canvas from intercepting parent page scrolling prematurely */
+            pointer-events: none; 
+        }
+
+        /* Seamlessly re-enables interaction when a user actively targets the game area */
+        .project-card:hover .iframe-wrapper,
+        .iframe-wrapper:active,
+        .iframe-wrapper:focus-within {
+            pointer-events: auto;
         }
 
         .iframe-wrapper iframe {
             width: 100%;
-            /* Matches the native width of the CMU CS Academy canvas */
+            /* Matches the native workspace of the CMU CS Academy canvas */
             max-width: 410px;           
             aspect-ratio: 410 / 460;   /* Maintains strict internal game proportions */
             height: auto;              /* Allows height to scale perfectly relative to width */
@@ -32,16 +80,11 @@
             display: block;
         }
 
-        /* Standardizes layout scaling so cards stretch uniformly alongside embeds */
-        .project-card {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
-        }
-
         /* Responsive scaling check for smaller mobile environments */
         @media (max-width: 480px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
             .iframe-wrapper {
                 padding: 6px; /* Shrinks container padding slightly to maximize canvas game room */
             }
@@ -72,35 +115,39 @@
             <div class="projects-grid">
                 
                 <div class="project-card">
-                    <div class="project-header">
+                    <div class="project-header" style="padding: 20px 20px 0 20px;">
                         <h3>Personal Portfolio Website</h3>
                         <span class="project-date">2026</span>
                     </div>
                     <div class="project-body">
-                        <p>A fully responsive personal portfolio website showcasing projects, skills, and experiences. Built with semantic HTML5, CSS3 with Grid and Flexbox, and designed with a mobile-first approach.</p>
-                        <div class="project-tech">
-                            <span class="tech">HTML5</span>
-                            <span class="tech">CSS3</span>
-                            <span class="tech">Responsive Design</span>
-                            <span class="tech">Semantic HTML</span>
+                        <div class="project-text-content">
+                            <p>A fully responsive personal portfolio website showcasing projects, skills, and experiences. Built with semantic HTML5, CSS3 with Grid and Flexbox, and designed with a mobile-first approach.</p>
+                            <div class="project-tech">
+                                <span class="tech">HTML5</span>
+                                <span class="tech">CSS3</span>
+                                <span class="tech">Responsive Design</span>
+                                <span class="tech">Semantic HTML</span>
+                            </div>
                         </div>
-                        <p class="project-description"><strong>Key Features:</strong> Responsive navigation, smooth animations, organized content layout, mobile optimization.</p>
+                        <p class="project-description" style="margin-top: 20px; border-top: 1px solid #f1f5f9; padding-top: 15px;"><strong>Key Features:</strong> Responsive navigation, smooth animations, organized content layout, mobile optimization.</p>
                     </div>
                 </div>
 
                 <div class="project-card">
-                    <div class="project-header">
+                    <div class="project-header" style="padding: 20px 20px 0 20px;">
                         <h3>AP CSP Project</h3>
                         <span class="project-date">2025</span>
                     </div>
                     <div class="project-body">
-                        <p>An interactive game that allows users to guess different countries' flags.</p>
-                        <div class="project-tech">
-                            <span class="tech">Python</span>
-                            <span class="tech">CMU CS Academy</span>
-                            <span class="tech">Game Design</span>
+                        <div class="project-text-content">
+                            <p>An interactive game that allows users to guess different countries' flags.</p>
+                            <div class="project-tech">
+                                <span class="tech">Python</span>
+                                <span class="tech">CMU CS Academy</span>
+                                <span class="tech">Game Design</span>
+                            </div>
+                            <p class="project-description"><strong>Key Features:</strong> A geography guessing game developed using Python graphics on the CMU CS Academy platform.</p>
                         </div>
-                        <p class="project-description"><strong>Key Features:</strong> A geography guessing game developed using Python graphics on the CMU CS Academy platform.</p>
                         
                         <div class="iframe-wrapper">
                             <iframe src="https://academy.cs.cmu.edu/sharing/greyKangaroo262216/embed" title="AP CSP Flag Guessing Game" loading="lazy"></iframe>
@@ -109,18 +156,20 @@
                 </div>
 
                 <div class="project-card">
-                    <div class="project-header">
+                    <div class="project-header" style="padding: 20px 20px 0 20px;">
                         <h3>2D Micro Golf Game</h3>
                         <span class="project-date">2025</span>
                     </div>
                     <div class="project-body">
-                        <p>A top-down, physics-based mini-golf simulation featuring drag-and-release mechanics for striking the ball, obstacle collision, and score tracking.</p>
-                        <div class="project-tech">
-                            <span class="tech">JavaScript</span>
-                            <span class="tech">HTML5 Canvas</span>
-                            <span class="tech">Physics Engine</span>
+                        <div class="project-text-content">
+                            <p>A top-down, physics-based mini-golf simulation featuring drag-and-release mechanics for striking the ball, obstacle collision, and score tracking.</p>
+                            <div class="project-tech">
+                                <span class="tech">JavaScript</span>
+                                <span class="tech">HTML5 Canvas</span>
+                                <span class="tech">Physics Engine</span>
+                            </div>
+                            <p class="project-description"><strong>Key Features:</strong> Realistic friction and ball bounce physics, dynamic power/aim indicator, and multiple unique map levels with sand traps and water hazards.</p>
                         </div>
-                        <p class="project-description"><strong>Key Features:</strong> Realistic friction and ball bounce physics, dynamic power/aim indicator, and multiple unique map levels with sand traps and water hazards.</p>
                         
                         <div class="iframe-wrapper">
                             <iframe src="https://academy.cs.cmu.edu/sharing/springGreenShark585669/embed" title="2D Micro Golf Game" loading="lazy"></iframe>
@@ -129,18 +178,20 @@
                 </div>
 
                 <div class="project-card">
-                    <div class="project-header">
+                    <div class="project-header" style="padding: 20px 20px 0 20px;">
                         <h3>Classic Retro Snake</h3>
                         <span class="project-date">2025</span>
                     </div>
                     <div class="project-body">
-                        <p>A modern recreation of the arcade classic Snake. Players control the snake to collect food items, growing longer with each bite, while avoiding the walls and their own tail.</p>
-                        <div class="project-tech">
-                            <span class="tech">Python</span>
-                            <span class="tech">Pygame</span>
-                            <span class="tech">Algorithmic Logic</span>
+                        <div class="project-text-content">
+                            <p>A modern recreation of the arcade classic Snake. Players control the snake to collect food items, growing longer with each bite, while avoiding the walls and their own tail.</p>
+                            <div class="project-tech">
+                                <span class="tech">Python</span>
+                                <span class="tech">Pygame</span>
+                                <span class="tech">Algorithmic Logic</span>
+                            </div>
+                            <p class="project-description"><strong>Key Features:</strong> Grid-based movement logic, real-time score tracking, persistent high scores utilizing local file storage, and progressive speed difficulty.</p>
                         </div>
-                        <p class="project-description"><strong>Key Features:</strong> Grid-based movement logic, real-time score tracking, persistent high scores utilizing local file storage, and progressive speed difficulty.</p>
                         
                         <div class="iframe-wrapper">
                             <iframe src="https://academy.cs.cmu.edu/sharing/thistleLion876866/embed" title="Classic Retro Snake Game" loading="lazy"></iframe>
