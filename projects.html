@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - Personal Portfolio</title>
     <link rel="stylesheet" href="styles.css">
+
     <style>
-        /* Automatically balances grid heights cleanly across different screens */
+        /* GRID LAYOUT */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -14,26 +15,25 @@
             align-items: stretch;
         }
 
-        /* Forces rectangular boxes to maintain a uniform structure */
+        /* PROJECT CARD */
         .project-card {
             display: flex;
             flex-direction: column;
-            height: 100%;
+            height: 540px; /* Uniform rectangular height */
             box-sizing: border-box;
-            background: transparent; /* Blends perfectly with your global site background */
+            background: transparent;
             border: 1px solid #e2e8f0;
             border-radius: 12px;
             overflow: hidden;
         }
 
-        /* Distributes internal project card details evenly within the box */
+        /* INTERNAL CARD BODY */
         .project-body {
             display: flex;
             flex-direction: column;
             flex-grow: 1;
             padding: 20px;
-            box-sizing: border-box;
-            justify-content: space-between; /* Pushes the bottom items down perfectly */
+            justify-content: space-between;
         }
 
         .project-text-content {
@@ -43,54 +43,59 @@
             flex-grow: 1;
         }
 
-        /* Container ensuring the embed stays fully visible within the card view */
+        /* EMBEDDED GAME WRAPPER */
         .iframe-wrapper {
             width: 100%;
-            margin-top: auto; /* Aligns wrappers to the bottom of the card consistently */
-            padding-top: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            padding: 12px;
             background-color: #f8fafc;
             border-radius: 12px;
-            padding: 12px;
-            box-sizing: border-box;
             border: 1px solid #e2e8f0;
+            box-sizing: border-box;
+
+            /* Prevent layout break */
+            overflow: hidden;
             position: relative;
-            /* Prevents embedded canvas from intercepting parent page scrolling prematurely */
-            pointer-events: none; 
+
+            /* Disable interaction until hovered */
+            pointer-events: none;
         }
 
-        /* Seamlessly re-enables interaction when a user actively targets the game area */
-        .project-card:hover .iframe-wrapper,
-        .iframe-wrapper:active,
-        .iframe-wrapper:focus-within {
+        /* Enable interaction + scrolling when hovered */
+        .iframe-wrapper:hover {
+            overflow: auto;
             pointer-events: auto;
         }
 
+        /* EMBEDDED IFRAME */
         .iframe-wrapper iframe {
             width: 100%;
-            /* Matches the native workspace of the CMU CS Academy canvas */
-            max-width: 410px;           
-            aspect-ratio: 410 / 460;   /* Maintains strict internal game proportions */
-            height: auto;              /* Allows height to scale perfectly relative to width */
+            max-width: 410px;
+            aspect-ratio: 410 / 460;
+            height: auto;
+
+            /* Prevent iframe from stretching card */
+            max-height: 360px;
+
             border: none;
             border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
             display: block;
         }
 
-        /* Responsive scaling check for smaller mobile environments */
+        /* MOBILE FIXES */
         @media (max-width: 480px) {
             .projects-grid {
                 grid-template-columns: 1fr;
             }
+            .project-card {
+                height: 500px;
+            }
             .iframe-wrapper {
-                padding: 6px; /* Shrinks container padding slightly to maximize canvas game room */
+                padding: 6px;
             }
         }
     </style>
 </head>
+
 <body>
     <nav class="navbar">
         <div class="nav-container">
@@ -113,7 +118,8 @@
 
         <section class="projects-section">
             <div class="projects-grid">
-                
+
+                <!-- PORTFOLIO WEBSITE -->
                 <div class="project-card">
                     <div class="project-header" style="padding: 20px 20px 0 20px;">
                         <h3>Personal Portfolio Website</h3>
@@ -129,10 +135,13 @@
                                 <span class="tech">Semantic HTML</span>
                             </div>
                         </div>
-                        <p class="project-description" style="margin-top: 20px; border-top: 1px solid #f1f5f9; padding-top: 15px;"><strong>Key Features:</strong> Responsive navigation, smooth animations, organized content layout, mobile optimization.</p>
+                        <p class="project-description" style="margin-top: 20px; border-top: 1px solid #f1f5f9; padding-top: 15px;">
+                            <strong>Key Features:</strong> Responsive navigation, smooth animations, organized content layout, mobile optimization.
+                        </p>
                     </div>
                 </div>
 
+                <!-- AP CSP PROJECT -->
                 <div class="project-card">
                     <div class="project-header" style="padding: 20px 20px 0 20px;">
                         <h3>AP CSP Project</h3>
@@ -148,13 +157,14 @@
                             </div>
                             <p class="project-description"><strong>Key Features:</strong> A geography guessing game developed using Python graphics on the CMU CS Academy platform.</p>
                         </div>
-                        
+
                         <div class="iframe-wrapper">
                             <iframe src="https://academy.cs.cmu.edu/sharing/greyKangaroo262216/embed" title="AP CSP Flag Guessing Game" loading="lazy"></iframe>
                         </div>
                     </div>
                 </div>
 
+                <!-- MICRO GOLF -->
                 <div class="project-card">
                     <div class="project-header" style="padding: 20px 20px 0 20px;">
                         <h3>2D Micro Golf Game</h3>
@@ -170,13 +180,14 @@
                             </div>
                             <p class="project-description"><strong>Key Features:</strong> Realistic friction and ball bounce physics, dynamic power/aim indicator, and multiple unique map levels with sand traps and water hazards.</p>
                         </div>
-                        
+
                         <div class="iframe-wrapper">
                             <iframe src="https://academy.cs.cmu.edu/sharing/springGreenShark585669/embed" title="2D Micro Golf Game" loading="lazy"></iframe>
                         </div>
                     </div>
                 </div>
 
+                <!-- SNAKE GAME -->
                 <div class="project-card">
                     <div class="project-header" style="padding: 20px 20px 0 20px;">
                         <h3>Classic Retro Snake</h3>
@@ -192,16 +203,16 @@
                             </div>
                             <p class="project-description"><strong>Key Features:</strong> Grid-based movement logic, real-time score tracking, persistent high scores utilizing local file storage, and progressive speed difficulty.</p>
                         </div>
-                        
+
                         <div class="iframe-wrapper">
                             <iframe src="https://academy.cs.cmu.edu/sharing/thistleLion876866/embed" title="Classic Retro Snake Game" loading="lazy"></iframe>
                         </div>
                     </div>
                 </div>
 
-            </div> 
-        </section> 
-        
+            </div>
+        </section>
+
         <section class="content-section">
             <h2>Project Highlights</h2>
             <p>These projects demonstrate my understanding of:</p>
