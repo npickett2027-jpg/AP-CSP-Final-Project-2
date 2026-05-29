@@ -15,11 +15,11 @@
             align-items: stretch;
         }
 
-        /* PROJECT CARD */
+        /* PROJECT CARD — increased height so games fit fully */
         .project-card {
             display: flex;
             flex-direction: column;
-            height: 540px; /* Uniform rectangular height */
+            height: 650px; /* Ensures full game visibility */
             box-sizing: border-box;
             background: transparent;
             border: 1px solid #e2e8f0;
@@ -43,7 +43,7 @@
             flex-grow: 1;
         }
 
-        /* EMBEDDED GAME WRAPPER */
+        /* EMBEDDED GAME WRAPPER — no scrolling, full interaction */
         .iframe-wrapper {
             width: 100%;
             padding: 12px;
@@ -52,42 +52,30 @@
             border: 1px solid #e2e8f0;
             box-sizing: border-box;
 
-            /* Prevent layout break */
-            overflow: hidden;
-            position: relative;
-
-            /* Disable interaction until hovered */
-            pointer-events: none;
+            overflow: hidden; /* No scrollbars */
+            pointer-events: auto; /* Always interactive */
         }
 
-        /* Enable interaction + scrolling when hovered */
-        .iframe-wrapper:hover {
-            overflow: auto;
-            pointer-events: auto;
-        }
-
-        /* EMBEDDED IFRAME */
+        /* EMBEDDED IFRAME — full height so game is always visible */
         .iframe-wrapper iframe {
             width: 100%;
             max-width: 410px;
             aspect-ratio: 410 / 460;
             height: auto;
 
-            /* Prevent iframe from stretching card */
-            max-height: 360px;
-
+            max-height: 460px; /* Full CMU Academy canvas height */
             border: none;
             border-radius: 8px;
             display: block;
         }
 
-        /* MOBILE FIXES */
+        /* MOBILE ADJUSTMENT */
         @media (max-width: 480px) {
             .projects-grid {
                 grid-template-columns: 1fr;
             }
             .project-card {
-                height: 500px;
+                height: 600px; /* Still fits full game */
             }
             .iframe-wrapper {
                 padding: 6px;
